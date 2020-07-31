@@ -1,0 +1,9 @@
+[submodule "cs"]
+	path = cs
+	url = https://github.com/CSPMRT/doc_cs.git
+[submodule "physics"]
+	path = physics
+	url = https://github.com/CSPMRT/doc_physics.git
+[submodule "mathematics"]
+	path = mathematics
+	url = https://github.com/CSPMRT/doc_math.git
