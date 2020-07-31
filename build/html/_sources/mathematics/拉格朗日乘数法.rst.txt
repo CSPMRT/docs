@@ -1,0 +1,29 @@
+****************
+拉格朗日乘数法
+****************
+
+.. note:: 
+   作者：Chen Longhao   时间：2020年7月5日
+
+拉格朗日乘数法的用处
+---------------------
+求函数 :math:`f(x,y,z)` 在 :math:`\varphi(x,y,z)=0` 时的极值
+
+具体方法
+-----------
+构建辅助函数
+
+.. math::
+   F(x,y,z)=f(x,y,z)+\lambda\varphi(x,y,z)
+
+然后把 :math:`F(x,y,z)` 对x，y，z求偏导，并令其等于0，得到方程组
+
+.. math::
+   \begin{cases}
+   \frac{\partial F}{\partial x}=0 \\
+   \frac{\partial F}{\partial y}=0 \\
+   \frac{\partial F}{\partial z}=0 \\
+   \varphi(x,y,z)=0 
+   \end{cases}
+
+再求解这个方程组，得到的x，y，z就是可能的极值点

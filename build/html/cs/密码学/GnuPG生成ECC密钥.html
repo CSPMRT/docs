@@ -1,0 +1,293 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>GnuPG生成ECC密钥 &mdash; CSPMRT 文档库  文档</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="https://cspmrt.github.io/js/stat.js"></script>
+        <script src="../../_static/translations.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="Git常用命令" href="../版本控制系统/Git常用命令.html" />
+    <link rel="prev" title="计算机科学研究小组研究成果" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> CSPMRT 文档库
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">计算机科学研究小组研究成果</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">GnuPG生成ECC密钥</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#gnupg">GnuPG简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ecc">ECC简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">GnuPG生成ECC密钥</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../版本控制系统/Git常用命令.html">Git常用命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../算法与数据结构/C++实现简单的二叉搜索树.html">C++实现简单的二叉搜索树</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../physics/index.html">物理学小组研究成果</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mathematics/index.html">数学小组研究成果</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CSPMRT 文档库</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">计算机科学研究小组研究成果</a> &raquo;</li>
+        
+      <li>GnuPG生成ECC密钥</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/cs/密码学/GnuPG生成ECC密钥.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="gnupgecc">
+<h1>GnuPG生成ECC密钥<a class="headerlink" href="#gnupgecc" title="永久链接至标题">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>作者：Chen Longhao   时间：2020年7月5日</p>
+</div>
+<div class="section" id="gnupg">
+<h2>GnuPG简介<a class="headerlink" href="#gnupg" title="永久链接至标题">¶</a></h2>
+<p>GNU Privacy Guard（GnuPG或GPG）是一种加密软件，它是PGP加密软件的满足GPL的替代物。
+GnuPG依照由IETF订定的OpenPGP技术标准设计。GnuPG用于加密、数字签名及产生非对称钥匙对的软件。
+具体简介可以看：<a class="reference external" href="https://baike.baidu.com/item/GnuPG">https://baike.baidu.com/item/GnuPG</a></p>
+<p>如果你想尝试其中的一些功能，可以试试我开发的网页版的完全兼容GnuPG的加密程序OpenPGP-Web：<a class="reference external" href="https://chenlhlinux.github.io/pgpweb/">https://chenlhlinux.github.io/pgpweb/</a></p>
+</div>
+<div class="section" id="ecc">
+<h2>ECC简介<a class="headerlink" href="#ecc" title="永久链接至标题">¶</a></h2>
+<p>ECC是椭圆曲线密码学的缩写，一种建立公开密钥加密的演算法，基于椭圆曲线数学。椭圆曲线在密码学中的使用是在1985年由Neal Koblitz和Victor Miller分别独立提出的。
+ECC的主要优势是在某些情况下它比其他的方法使用更小的密钥——比如RSA加密算法——提供相当的或更高等级的安全。
+具体简介可以看：<a class="reference external" href="https://baike.baidu.com/item/%E6%A4%AD%E5%9C%86%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/10305582">https://baike.baidu.com/item/%E6%A4%AD%E5%9C%86%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/10305582</a></p>
+<p>算法原理可以看：<a class="reference external" href="https://zhuanlan.zhihu.com/p/36326221">https://zhuanlan.zhihu.com/p/36326221</a></p>
+</div>
+<div class="section" id="id1">
+<h2>GnuPG生成ECC密钥<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>因为ECC是一种比较新的算法，在gpg默认的密钥生成菜单中并不包含ECC密钥，如果需要生成ECC密钥，
+则需要启用专家模式。</p>
+<p>执行命令：<code class="docutils literal notranslate"><span class="pre">gpg</span> <span class="pre">--full-gen-key</span> <span class="pre">--expert</span></code></p>
+<p>会返回:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>gpg (GnuPG) 2.2.12; Copyright (C) 2018 Free Software Foundation, Inc.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+请选择您要使用的密钥类型：
+   (1) RSA 和 RSA （默认）
+   (2) DSA 和 Elgamal
+   (3) DSA（仅用于签名）
+   (4) RSA（仅用于签名）
+   (7) DSA（自定义用途）
+   (8) RSA（自定义用途）
+   (9) ECC 和 ECC
+(10) ECC（仅用于签名）
+(11) ECC（自定义用途）
+(13) 现存的密钥
+您的选择是？
+</pre></div>
+</div>
+<p>9,10,11即为生成ECC密钥。我们选择 <code class="docutils literal notranslate"><span class="pre">(9)</span> <span class="pre">ECC</span> <span class="pre">和</span> <span class="pre">ECC</span></code></p>
+<p>然后就会进入曲线选择菜单</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>请选择您想要使用的椭圆曲线：
+   (1) Curve 25519
+   (3) NIST P-256
+   (4) NIST P-384
+   (5) NIST P-521
+   (6) Brainpool P-256
+   (7) Brainpool P-384
+   (8) Brainpool P-512
+   (9) secp256k1
+您的选择是？
+</pre></div>
+</div>
+<p>这里我推荐使用 <code class="docutils literal notranslate"><span class="pre">(1)</span> <span class="pre">Curve</span> <span class="pre">25519</span></code></p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>关于Curve 25519可以参见：<a class="reference external" href="https://www.zhihu.com/question/290541183/answer/529676502">https://www.zhihu.com/question/290541183/answer/529676502</a></p>
+</div>
+<p>接下来就和创建普通RSA密钥差不多，按照说明去填即可。</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../版本控制系统/Git常用命令.html" class="btn btn-neutral float-right" title="Git常用命令" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../index.html" class="btn btn-neutral float-left" title="计算机科学研究小组研究成果" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; 版权所有 2020, CSPMRT
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

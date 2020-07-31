@@ -1,0 +1,275 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>热传导方程的数值模拟 &mdash; CSPMRT 文档库  文档</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="https://cspmrt.github.io/js/stat.js"></script>
+        <script src="../../_static/translations.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="数学小组研究成果" href="../../mathematics/index.html" />
+    <link rel="prev" title="物理学小组研究成果" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> CSPMRT 文档库
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../cs/index.html">计算机科学研究小组研究成果</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">物理学小组研究成果</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">热传导方程的数值模拟</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../mathematics/index.html">数学小组研究成果</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CSPMRT 文档库</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">物理学小组研究成果</a> &raquo;</li>
+        
+      <li>热传导方程的数值模拟</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/physics/数值模拟/热传导方程的数值模拟.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>热传导方程的数值模拟<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>作者：Chen Longhao   时间：2020年6月25日</p>
+</div>
+<p>热传导方程（或称热方程）是一个重要的偏微分方程，它描述一个区域内的温度如何随时间变化
+其完整形式为：</p>
+<div class="math notranslate nohighlight">
+\[u_t = k \triangle u\]</div>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p><span class="math notranslate nohighlight">\(\triangle\)</span> 为拉普拉斯算子</p>
+</div>
+<p>现在我们使用fipy对其进行数值求解</p>
+<p>完整的程序如下：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fipy</span> <span class="k">as</span> <span class="nn">fp</span>
+
+<span class="n">nx</span><span class="o">=</span><span class="mi">100</span>   <span class="c1">#dx的个数</span>
+<span class="n">ny</span><span class="o">=</span><span class="mi">100</span>   <span class="c1">#dy的个数</span>
+<span class="n">dx</span><span class="o">=</span><span class="mf">0.1</span>
+<span class="n">dy</span><span class="o">=</span><span class="n">dx</span>
+
+<span class="n">mesh</span><span class="o">=</span><span class="n">fp</span><span class="o">.</span><span class="n">Grid2D</span><span class="p">(</span><span class="n">dx</span><span class="o">=</span><span class="n">dx</span><span class="p">,</span><span class="n">dy</span><span class="o">=</span><span class="n">dy</span><span class="p">,</span><span class="n">nx</span><span class="o">=</span><span class="n">nx</span><span class="p">,</span><span class="n">ny</span><span class="o">=</span><span class="n">ny</span><span class="p">)</span>
+<span class="n">phi</span><span class="o">=</span><span class="n">fp</span><span class="o">.</span><span class="n">CellVariable</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">,</span><span class="n">value</span><span class="o">=</span><span class="mf">5.</span><span class="p">)</span>  <span class="c1">#value为初始温度</span>
+
+<span class="n">D</span><span class="o">=</span><span class="mi">1</span>   <span class="c1">#即为方程中的k</span>
+<span class="n">eq</span><span class="o">=</span><span class="n">fp</span><span class="o">.</span><span class="n">TransientTerm</span><span class="p">()</span><span class="o">==</span><span class="n">fp</span><span class="o">.</span><span class="n">DiffusionTerm</span><span class="p">(</span><span class="n">coeff</span><span class="o">=</span><span class="n">D</span><span class="p">)</span>   <span class="c1">#方程</span>
+
+<span class="c1">#温度</span>
+<span class="n">T1</span><span class="o">=</span><span class="mi">10</span>
+<span class="n">T2</span><span class="o">=</span><span class="mi">0</span>
+
+<span class="c1">#设置边界条件</span>
+<span class="n">phi</span><span class="o">.</span><span class="n">constrain</span><span class="p">(</span><span class="n">T2</span><span class="p">,</span><span class="n">mesh</span><span class="o">.</span><span class="n">facesRight</span><span class="p">)</span>
+<span class="n">phi</span><span class="o">.</span><span class="n">constrain</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span><span class="n">mesh</span><span class="o">.</span><span class="n">facesLeft</span><span class="p">)</span>
+<span class="n">phi</span><span class="o">.</span><span class="n">constrain</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span><span class="n">mesh</span><span class="o">.</span><span class="n">facesBottom</span><span class="p">)</span>
+
+<span class="n">viewer</span><span class="o">=</span><span class="n">fp</span><span class="o">.</span><span class="n">Viewer</span><span class="p">(</span><span class="nb">vars</span><span class="o">=</span><span class="n">phi</span><span class="p">,</span> <span class="n">datamin</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="n">datamax</span><span class="o">=</span><span class="mf">10.</span><span class="p">)</span>
+<span class="n">viewer</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+
+<span class="n">time</span><span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="mf">0.8</span> <span class="o">*</span> <span class="n">dx</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">D</span><span class="p">)</span>
+
+<span class="n">steps</span><span class="o">=</span><span class="mi">100</span>
+<span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">steps</span><span class="p">):</span>
+   <span class="n">eq</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">var</span><span class="o">=</span><span class="n">phi</span><span class="p">,</span><span class="n">dt</span><span class="o">=</span><span class="n">time</span><span class="p">)</span>
+   <span class="nb">print</span><span class="p">(</span><span class="n">step</span><span class="p">)</span>
+   <span class="n">viewer</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">phi</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>  <span class="c1">#打印最后结果</span>
+<span class="nb">input</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>最后结果：</p>
+<img alt="../../_images/热传导方程数值模拟_1.png" src="../../_images/热传导方程数值模拟_1.png" />
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../mathematics/index.html" class="btn btn-neutral float-right" title="数学小组研究成果" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../index.html" class="btn btn-neutral float-left" title="物理学小组研究成果" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; 版权所有 2020, CSPMRT
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
