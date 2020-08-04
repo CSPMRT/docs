@@ -2,6 +2,9 @@
 Manim安装
 ***********
 
+.. note::
+    作者: Chen Longhao    日期:2020年8月2日
+
 安装系统依赖库::
 
     # apt install ffmpeg
