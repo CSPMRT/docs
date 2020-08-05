@@ -166,39 +166,39 @@
             
   <div class="section" id="id1">
 <h1>分解质数的一个算法<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
-<dl class="simple">
-<dt>..metadata::</dt><dd><p>Chen Longhao
-2020,08,05</p>
-</dd>
-</dl>
+<div class="admonition">
+<p class="admonition-title">文档元数据</p>
+<p>作者：Chen Longhao</p>
+<p>创建时间：2020年8月5日</p>
+</div>
 <p>导入一些必须的库</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import math
-import time
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">time</span>
 </pre></div>
 </div>
-<p>求解方程 $ x^2 = 1(mod n) $</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def solve_x(n):
-    i = 1
-    while math.sqrt(n*i+1) % 1 != 0 or n*i + 1 != math.sqrt(n*i+1)**2:    #防止python的浮点误差
-        i += 1
-    return int(math.sqrt(n*i+1))
+<p>求解方程 <span class="math notranslate nohighlight">\(x^2 = 1(mod n)\)</span></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">solve_x</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">1</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">n</span><span class="o">*</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">!=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">:</span>    <span class="c1">#防止python的浮点误差</span>
+        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>计算</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}q = gcd(x + 1, n)\\p = gcd(x - 1, n)\end{aligned}\end{align} \]</div>
 <p>p,q则为所得质数</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def solve_pq(n):
-    x = solve_x(n)
-    p = math.gcd(x - 1, n)
-    q = math.gcd(x + 1, n)
-    return [p,q]
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">solve_pq</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">solve_x</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">gcd</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">gcd</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">p</span><span class="p">,</span><span class="n">q</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>实例，分解 $ 97 :raw-latex:<a href="#id2"><span class="problematic" id="id3">`</span></a>times <a href="#id4"><span class="problematic" id="id5">`</span></a>557 $</p>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>s_t = time.time()
-print(solve_pq(97*557))
-print(time.time() - s_t)
+<p>实例，分解 <span class="math notranslate nohighlight">\(97 \times 557\)</span></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">s_t</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">solve_pq</span><span class="p">(</span><span class="mi">97</span><span class="o">*</span><span class="mi">557</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">s_t</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">557</span><span class="p">,</span> <span class="mi">97</span><span class="p">]</span>

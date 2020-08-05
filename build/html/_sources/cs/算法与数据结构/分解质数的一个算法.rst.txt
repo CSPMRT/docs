@@ -1,21 +1,21 @@
-*****************
+********************
 分解质数的一个算法
-*****************
+********************
 
-..metadata::
+.. metadata::
     Chen Longhao
     2020,08,05
 
 导入一些必须的库
 
-.. code:: ipython3
+.. code:: python3
 
     import math
     import time
 
-求解方程 $ x^2 = 1(mod n) $
+求解方程 :math:`x^2 = 1(mod n)`
 
-.. code:: ipython3
+.. code:: python3
 
     def solve_x(n):
         i = 1
@@ -34,7 +34,7 @@
 
 p,q则为所得质数
 
-.. code:: ipython3
+.. code:: python3
 
     def solve_pq(n):
         x = solve_x(n)
@@ -42,9 +42,9 @@ p,q则为所得质数
         q = math.gcd(x + 1, n)
         return [p,q]
 
-实例，分解 $ 97 :raw-latex:`\times `557 $
+实例，分解 :math:`97 \times 557`
 
-.. code:: ipython3
+.. code:: python3
 
     s_t = time.time()
     print(solve_pq(97*557))
