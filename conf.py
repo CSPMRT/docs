@@ -14,7 +14,7 @@
 #
 # import os
 # import sys
-# sys.path.insert(0, os.path.abspath('.'))
+sys.path.insert(os.path.abspath('./ext/'))
 
 
 # -- Project information -----------------------------------------------------
@@ -40,6 +40,7 @@ release = u''
 # ones.
 extensions = [
     'sphinx.ext.mathjax',
+    'sphinx_cspmrt_ext'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
