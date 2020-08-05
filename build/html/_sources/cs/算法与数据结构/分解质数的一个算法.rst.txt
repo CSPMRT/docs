@@ -1,0 +1,59 @@
+*****************
+分解质数的一个算法
+*****************
+
+..metadata::
+    Chen Longhao
+    2020,08,05
+
+导入一些必须的库
+
+.. code:: ipython3
+
+    import math
+    import time
+
+求解方程 $ x^2 = 1(mod n) $
+
+.. code:: ipython3
+
+    def solve_x(n):
+        i = 1
+        while math.sqrt(n*i+1) % 1 != 0 or n*i + 1 != math.sqrt(n*i+1)**2:    #防止python的浮点误差
+            i += 1
+        return int(math.sqrt(n*i+1))
+
+
+计算
+
+.. math::
+
+    q = gcd(x + 1, n)
+    
+    p = gcd(x - 1, n) 
+
+p,q则为所得质数
+
+.. code:: ipython3
+
+    def solve_pq(n):
+        x = solve_x(n)
+        p = math.gcd(x - 1, n)
+        q = math.gcd(x + 1, n)
+        return [p,q]
+
+实例，分解 $ 97 :raw-latex:`\times `557 $
+
+.. code:: ipython3
+
+    s_t = time.time()
+    print(solve_pq(97*557))
+    print(time.time() - s_t)
+
+
+.. parsed-literal::
+
+    [557, 97]
+    0.004469633102416992
+
+
