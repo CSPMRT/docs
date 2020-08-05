@@ -14,7 +14,7 @@
 #
 import os
 import sys
-sys.path.insert(os.path.abspath('./ext/'))
+sys.path.append(os.path.abspath('./ext/'))
 
 
 # -- Project information -----------------------------------------------------
