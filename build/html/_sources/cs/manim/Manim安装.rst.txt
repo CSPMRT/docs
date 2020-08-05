@@ -2,8 +2,9 @@
 Manim安装
 ***********
 
-.. note::
-    作者: Chen Longhao    日期:2020年8月2日
+.. metadata::
+    Chen Longhao
+    2020,08,02
 
 安装系统依赖库::
 

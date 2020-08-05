@@ -2,8 +2,9 @@
 GnuPG生成ECC密钥
 ******************
 
-.. note:: 
-   作者：Chen Longhao   时间：2020年7月5日
+.. metadata::
+   Chen Longhao
+   2020,07,05
 
 GnuPG简介
 -----------

@@ -2,8 +2,9 @@
 fipy 安装方法
 ***************
 
-.. note:: 
-   作者：Chen Longhao   时间：2020年6月25日
+.. metadata::
+   Chen Longhao
+   2020,06,25
 
 简介
 -----
