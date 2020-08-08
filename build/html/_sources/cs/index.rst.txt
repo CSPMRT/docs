@@ -6,6 +6,7 @@
    :maxdepth: 1
    :caption: 目录:
 
+   其他/os.path子模块介绍
    HelloWorld运行背后/HelloWorld运行背后(1)编译
    算法与数据结构/Python实现排序链表
    算法与数据结构/分解质数的一个算法
