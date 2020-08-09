@@ -18,6 +18,11 @@ Manim安装
 
     # pip3 install manimlib
 
+解决中文无法输出问题：
+
+将manimlib目录下的 ``constants.py`` 里面的其中的 ``TEX_USE_CTEX = False`` 改成 ``TEX_USE_CTEX = True`` ，
+具体可参见: https://blog.csdn.net/yiqishangxuewu/article/details/105414057
+
 至此，manim就安装完成了。
 
 一个简单的示例::
