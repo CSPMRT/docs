@@ -1,6 +1,6 @@
 #! /bin/bash
-git pull
-git submodule update --remote --merge
+while true; do if git pull; then break; fi; done
+while true; do if git submodule update --remote --merge; then break; fi; done
 make html
 git status
 echo '[y/n]'
@@ -9,5 +9,5 @@ if [ $a = 'y' ]
 then
 git add .
 git commit -m "update"
-git push
+while true; do if git push; then break; fi; done
 fi

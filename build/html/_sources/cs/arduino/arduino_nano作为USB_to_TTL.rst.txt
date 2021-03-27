@@ -1,0 +1,37 @@
+********************************************************
+arduino nano作为USB to TTL为arduino mini上传程序
+********************************************************
+
+.. metadata::
+	Chen Longhao
+	2021,03,27
+
+硬件部分修改
+-----------------
+将nano的 ``reset`` 与地短接，其他部分不作修改。
+
+软件部分修改
+---------------
+将一下程序写入用作USB to TTL的nano中
+
+.. code-block:: cpp
+
+	void setup()
+	{
+		pinMode(0, INPUT_PULLUP);
+		pinMode(1, INPUT_PULLUP);
+	}
+
+	void loop() {}
+
+nano与mini的连线
+-------------------
+
+===========	=============
+nano			mini
+===========	=============
+RX		RX
+TX		TX
+5V		Vcc
+GND		GND
+===========	=============
