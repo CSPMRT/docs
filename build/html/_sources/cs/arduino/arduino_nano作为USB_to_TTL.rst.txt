@@ -12,7 +12,7 @@ arduino nano作为USB to TTL为arduino mini上传程序
 
 软件部分修改
 ---------------
-将一下程序写入用作USB to TTL的nano中
+将以下程序写入用作USB to TTL的nano中
 
 .. code-block:: cpp
 
