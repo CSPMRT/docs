@@ -11,7 +11,7 @@ jobs:
 
       - name: Checkout submodules
         run: |
-          while true; do if git submodule update --remote --merge; then break; fi; done
+          while true; do if git submodule update --init --recursive --remote --merge; then break; fi; done
 
       - name: Set up Python
         uses: actions/setup-python@v1
