@@ -12,7 +12,7 @@ GNU Privacy Guard（GnuPG或GPG）是一种加密软件，它是PGP加密软件�
 GnuPG依照由IETF订定的OpenPGP技术标准设计。GnuPG用于加密、数字签名及产生非对称钥匙对的软件。
 具体简介可以看：https://baike.baidu.com/item/GnuPG
 
-如果你想尝试其中的一些功能，可以试试我开发的网页版的完全兼容GnuPG的加密程序OpenPGP-Web：https://chenlhlinux.github.io/pgpweb/
+如果你想尝试其中的一些功能，可以试试我开发的网页版的完全兼容GnuPG的加密程序OpenPGP-Web：https://Longhao-Chen.github.io/pgpweb/
 
 ECC简介
 --------
