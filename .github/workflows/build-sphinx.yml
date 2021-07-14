@@ -1,0 +1,40 @@
+name: build-sphinx
+
+on: workflow_dispatch
+
+jobs:
+    build:
+      runs-on: ubuntu-latest
+      steps:
+      - name: checkout actions
+        uses: actions/checkout@v1
+
+      - name: Checkout submodules
+        run: |
+          while true; do if git submodule update --remote --merge; then break; fi; done
+
+      - name: Set up Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.8
+          
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install sphinx sphinx_rtd_theme jieba
+
+      - name: Build
+        run: |
+          make html
+
+      - name: commit
+        run: |
+          git config --global user.email Longhao.Chen@outlook.com
+          git config --global user.name Longhao.Chen
+          git add .
+          git commit -m "update"
+
+      - name: Push
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
