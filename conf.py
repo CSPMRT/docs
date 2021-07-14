@@ -20,7 +20,7 @@ sys.path.append(os.path.abspath('./ext/'))
 # -- Project information -----------------------------------------------------
 
 project = u'CSPMRT 文档库'
-copyright = u'2020, CSPMRT'
+copyright = u'2020-2021, CSPMRT'
 author = u'CSPMRT'
 
 # The short X.Y version
